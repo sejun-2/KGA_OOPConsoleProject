@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace KGA_OOPConsoleProject
 {
-    internal class Inventory
+    public class Inventory
     {
+
+
+
     }
 }
