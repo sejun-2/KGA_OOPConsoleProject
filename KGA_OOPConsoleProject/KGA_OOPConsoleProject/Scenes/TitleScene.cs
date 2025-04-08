@@ -14,9 +14,9 @@ namespace KGA_OOPConsoleProject.Scenes
         }
         public override void Render()
         {
-            Console.WriteLine("*******************************");
-            Console.WriteLine("*     로빈슨 크루소 따라잡기    *");
-            Console.WriteLine("*******************************");
+            Console.WriteLine("***********************************");
+            Console.WriteLine("*      로빈슨 크루소 따라잡기     *");
+            Console.WriteLine("***********************************");
             Console.WriteLine();
             Console.WriteLine(" 계속하려면 아무키나 누르세요.....");
         }
@@ -29,6 +29,7 @@ namespace KGA_OOPConsoleProject.Scenes
         }
         public override void Result()
         {
+            Game.ChangeScene("Uninhabited");
         }
     }
 }
