@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace KGA_OOPConsoleProject
 {
-    internal class BaseScene
+    public abstract class BaseScene
     {
+        public string name;
+
+        public abstract void Render();
+        public abstract void Input();
+        public abstract void Update();
+        public abstract void Result();
+
+
     }
 }

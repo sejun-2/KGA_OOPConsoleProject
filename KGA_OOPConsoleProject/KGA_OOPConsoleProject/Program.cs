@@ -1,6 +1,4 @@
-﻿using KGA_OOPConsoleProject.Scenes;
-
-namespace KGA_OOPConsoleProject
+﻿namespace KGA_OOPConsoleProject
 {
     internal class Program
     {
