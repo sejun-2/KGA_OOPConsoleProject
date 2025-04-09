@@ -17,6 +17,9 @@ namespace KGA_OOPConsoleProject
         private static Dictionary<string, BaseScene> sceneDic;
         private static BaseScene CurScene;  // 현재 씬
 
+        private static Player player; // 플레이어 객체
+        public static Player Player { get { return Player; } }  // 플레이어 접근자
+
         // 게임에 필요한 기능들
         // 1. 게임 시작
         public static void Start()
@@ -30,6 +33,7 @@ namespace KGA_OOPConsoleProject
             sceneDic.Add("Beach", new BeachScene());
             sceneDic.Add("Forest", new ForestScene());
             sceneDic.Add("Cave", new CaveScene());
+            sceneDic.Add("Ocean", new OceanScene());
 
             CurScene = sceneDic["Title"]; // 현재 씬을 타이틀 씬으로 설정
         }

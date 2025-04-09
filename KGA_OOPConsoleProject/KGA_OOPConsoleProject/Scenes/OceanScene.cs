@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KGA_OOPConsoleProject.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,10 @@ namespace KGA_OOPConsoleProject.Scenes
             Console.WriteLine();
             Console.WriteLine("당신은 바다를 탐험하기로 결심했습니다.");
             Console.WriteLine("주변을 둘러보니 해양 생물들이 보입니다.");
-            Console.WriteLine("어디로 가시겠습니까?");
+            Console.WriteLine("무엇을 하시겠습니까?");
             Console.WriteLine();
             Console.WriteLine("1. 해양 생물을 조사한다.");
-            Console.WriteLine("2. 해안가를 조사한다.");
+            Console.WriteLine("2. 낚시를 한다.");
             Console.WriteLine("3. 뒤로가기.");
         }
         public override void Input()
@@ -31,6 +32,27 @@ namespace KGA_OOPConsoleProject.Scenes
         }
         public override void Update()
         {
+            // 예를 들어, 해양 생물 조사 결과를 업데이트하는 등의 작업을 수행할 수 있습니다.
+            Player player = new Player(); // 플레이어 객체를 가져옵니다.
+
+            // 여기서는 랜덤으로 해양 생물 조사 성공 여부를 결정합니다.
+            Random rand = new Random();
+            int result = rand.Next(1, 10); // 1부터 3까지의 랜덤 숫자 생성
+            if (result >= 6)
+            {
+                Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
+                System.Threading.Thread.Sleep(1500); // 2초 대기
+                Util.Print("해양 생물 조사가 성공했습니다.", ConsoleColor.Green);
+                System.Threading.Thread.Sleep(1500); // 2초 대기1
+                player.Inventory.Add(); // 플레이어의 인벤토리에 해양 생물 추가
+            }
+            else
+            {
+                Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
+                System.Threading.Thread.Sleep(1500); // 2초 대기
+                Util.Print("해양 생물 조사가 실패했습니다.", ConsoleColor.Red);
+                System.Threading.Thread.Sleep(1500); // 2초 대기1
+            }
         }
         public override void Result()
         {

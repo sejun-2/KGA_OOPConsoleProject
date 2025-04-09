@@ -10,7 +10,7 @@ namespace KGA_OOPConsoleProject.Items
 {
     public class Food : Item
     {
-        public Food(Vector2 position) : base('F', position)
+        public Food(Vector2 position) : base('I', position)
         {
             name = "생선";
             description = "신선한 생선입니다. 소량의 체력을 회복합니다.";
@@ -18,6 +18,7 @@ namespace KGA_OOPConsoleProject.Items
         public override void Use()
         {
             // 아이템 사용 로직
+            Game.Player.Eat(30);
         }
 
     }
