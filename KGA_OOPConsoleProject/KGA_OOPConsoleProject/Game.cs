@@ -24,6 +24,14 @@ namespace KGA_OOPConsoleProject
         // 1. 게임 시작
         public static void Start()
         {
+            Console.CursorVisible = false;  // 커서 숨김
+
+            // 게임 설정
+            gameOver = false;
+
+            // 플레이어 설정
+            player = new Player();
+
             // 게임 시작시에 필요한 작업들
             // 게임에 있는 모든 씬들을 보관하고 빠르게 찾아줄 용도로 쓸 자료구조
             sceneDic = new Dictionary<string, BaseScene>();

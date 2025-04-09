@@ -47,6 +47,7 @@ namespace KGA_OOPConsoleProject.Scenes
                     break;
                 default:
                     Util.Print("잘못된 입력입니다. 다시 시도하세요.", ConsoleColor.Red);
+                    System.Threading.Thread.Sleep(500); // 0.5초 대기
                     break;
             }
         }

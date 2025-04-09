@@ -23,7 +23,7 @@ namespace KGA_OOPConsoleProject
         }
         public void print() // 게임 오브젝트 출력 메서드
         {
-            Console.SetCursorPosition((int)Position.X, (int)Position.Y);
+            Console.SetCursorPosition((int)Position.x, (int)Position.y);
             Console.ForegroundColor = color;
             Console.Write(symbol);
             Console.ResetColor();

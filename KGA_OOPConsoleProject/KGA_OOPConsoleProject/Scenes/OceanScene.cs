@@ -10,6 +10,10 @@ namespace KGA_OOPConsoleProject.Scenes
     internal class OceanScene : BaseScene
     {
         private ConsoleKey input;
+
+        Food fish = new Food(); // 해양 생물 아이템 생성
+        Player player = new Player(); // 플레이어 객체를 가져옵니다.
+
         public OceanScene()
         {
             name = "Ocean";
@@ -33,42 +37,69 @@ namespace KGA_OOPConsoleProject.Scenes
         public override void Update()
         {
             // 예를 들어, 해양 생물 조사 결과를 업데이트하는 등의 작업을 수행할 수 있습니다.
-            Player player = new Player(); // 플레이어 객체를 가져옵니다.
 
             // 여기서는 랜덤으로 해양 생물 조사 성공 여부를 결정합니다.
             Random rand = new Random();
             int result = rand.Next(1, 10); // 1부터 3까지의 랜덤 숫자 생성
-            if (result >= 6)
+            switch (input)
             {
-                Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
-                System.Threading.Thread.Sleep(1500); // 2초 대기
-                Util.Print("해양 생물 조사가 성공했습니다.", ConsoleColor.Green);
-                System.Threading.Thread.Sleep(1500); // 2초 대기1
-                player.Inventory.Add(); // 플레이어의 인벤토리에 해양 생물 추가
+                case ConsoleKey.D1:
+                    if (result >= 7)
+                    {
+                        Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기 -> 안하면 화면 초기 전환이 너무 빨라서 사라짐
+                        Util.Print("해양 생물 조사가 성공했습니다.", ConsoleColor.Green);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기 
+                        player.Inventory.Add(fish); // 플레이어의 인벤토리에 해양 생물 추가
+                    }
+                    else
+                    {
+                        Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기
+                        Util.Print("해양 생물 조사가 실패했습니다.", ConsoleColor.Red);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기 
+                    }
+                    break;
+                case ConsoleKey.D2:
+                    if (result >= 7)
+                    {
+                        Util.Print("낚시를 하는 중입니다...", ConsoleColor.Cyan);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기
+                        Util.Print("낚시에 성공했습니다.\n 물고기를 낚았습니다.", ConsoleColor.Green);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기
+                        player.Inventory.Add(fish); // 플레이어의 인벤토리에 해양 생물 추가
+                    }
+                    else
+                    {
+                        Util.Print("낚시를 하는 중입니다...", ConsoleColor.Cyan);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기
+                        Util.Print("낚시에 실패했습니다.", ConsoleColor.Red);
+                        System.Threading.Thread.Sleep(1000); // 1초 대기
+                    }
+                    break;
+                case ConsoleKey.D3:
+                    break;
+                default:
+                    break;
             }
-            else
-            {
-                Util.Print("해양 생물을 조사하는 중입니다...", ConsoleColor.Cyan);
-                System.Threading.Thread.Sleep(1500); // 2초 대기
-                Util.Print("해양 생물 조사가 실패했습니다.", ConsoleColor.Red);
-                System.Threading.Thread.Sleep(1500); // 2초 대기1
-            }
+            
         }
         public override void Result()
         {
             switch (input)
             {
                 case ConsoleKey.D1:
-                    Util.Print("해양 생물을 조사합니다.", ConsoleColor.Cyan);
+                    player.activity(10); // 활동 시 체력 감소
                     break;
                 case ConsoleKey.D2:
-                    Game.ChangeScene("Beach");
+                    player.activity(10); // 활동 시 체력 감소
                     break;
                 case ConsoleKey.D3:
-                    Game.ChangeScene("Island");
+                    Game.ChangeScene("Beach");
                     break;
                 default:
                     Util.Print("잘못된 입력입니다. 다시 시도하세요.", ConsoleColor.Red);
+                    System.Threading.Thread.Sleep(500); // 0.5초 대기
                     break;
             }
         }

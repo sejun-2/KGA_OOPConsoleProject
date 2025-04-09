@@ -42,7 +42,6 @@ namespace KGA_OOPConsoleProject
             if (index >= 0 && index < items.Count)
             {
                 items[index].Use(); // 인덱스에 해당하는 아이템 사용
-                items.RemoveAt(index); // 사용 후 아이템 제거
             }
             else
             {
@@ -80,6 +79,7 @@ namespace KGA_OOPConsoleProject
         private void Menu()
         {
             PrintAll();
+
             Console.WriteLine("1. 사용하기");
             Console.WriteLine("2. 버리기");
             Console.WriteLine("3. 뒤로가기");
@@ -194,12 +194,16 @@ namespace KGA_OOPConsoleProject
 
         public void PrintAll()
         {
-            Console.WriteLine("인벤토리:");
+            Console.WriteLine("==소유한 아이템=====");
+            if (items.Count == 0)
+            {
+                Console.WriteLine(" 없음 ");
+            }
             for (int i = 0; i < items.Count; i++)
             {
-                Console.WriteLine($"{i + 1}. {items[i].name} - {items[i].description}");
+                Console.WriteLine("{0}. {1}", i + 1, items[i].name);
             }
-            Console.WriteLine("=======================================================");
+            Console.WriteLine("====================");
         }
 
     }
