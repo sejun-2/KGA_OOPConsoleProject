@@ -51,6 +51,6 @@ namespace KGA_OOPConsoleProject.Scenes
             }
         }
     }
-    {
-    }
+    
+    
 }
