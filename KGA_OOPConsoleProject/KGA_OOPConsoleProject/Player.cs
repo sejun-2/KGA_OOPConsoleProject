@@ -15,7 +15,6 @@ namespace KGA_OOPConsoleProject
         public Inventory Inventory { get { return inventory; } } // 플레이어 인벤토리 접근자
         public bool[,] map;
 
-        private string Name { get; set; } // 플레이어 이름
 
         private int maxHP; // 플레이어 최대 체력
         public int MaxHP { get { return maxHP; } }
@@ -46,14 +45,12 @@ namespace KGA_OOPConsoleProject
             {
                 Game.GameOver("체력이 전부 소진되어 사망하셨습니다."); // 게임 오버 처리
             }
-
-
         }
         public void Print()
         {
             Console.SetCursorPosition(Position.x, Position.y);
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write('⭐');
+            Console.Write('P');
             Console.ResetColor();
         }
         public void Action(ConsoleKey input)
@@ -92,7 +89,7 @@ namespace KGA_OOPConsoleProject
                     break;
             }
 
-            if (map[targetPos.y, targetPos.x] == true)
+            ifads (map[targetPos.y, targetPos.x] == true)
             {
                 Position = targetPos;
             }

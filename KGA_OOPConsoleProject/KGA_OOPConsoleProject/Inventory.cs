@@ -82,7 +82,7 @@ namespace KGA_OOPConsoleProject
 
             Console.WriteLine("1. 사용하기");
             Console.WriteLine("2. 버리기");
-            Console.WriteLine("3. 뒤로가기");
+            Console.WriteLine("0. 뒤로가기");
 
             ConsoleKey input = Console.ReadKey(true).Key; // true는 키를 누른 후 화면에 출력하지 않음
             switch (input)

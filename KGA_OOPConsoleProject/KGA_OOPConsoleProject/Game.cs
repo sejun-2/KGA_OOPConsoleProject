@@ -10,15 +10,15 @@ namespace KGA_OOPConsoleProject
     public static class Game
     {
         // 게임에 필요한 정보들
-        private static bool gameOver;
-        //private Stack<string> sceneStack; // 씬 스택 (뒤로가기 기능을 위해서 씬을 스택에 저장함)
+        private static bool gameOver; 
 
         // 화면 전환
         private static Dictionary<string, BaseScene> sceneDic;
         private static BaseScene CurScene;  // 현재 씬
+        public static string prevSceneName; // 이전 씬 이름
 
         private static Player player; // 플레이어 객체
-        public static Player Player { get { return Player; } }  // 플레이어 접근자
+        public static Player Player { get { return player; } }  // 플레이어 접근자
 
         // 게임에 필요한 기능들
         // 1. 게임 시작
@@ -55,6 +55,8 @@ namespace KGA_OOPConsoleProject
         //3. 게임동작
         public static void Run()
         {
+            Start(); // 게임 시작
+
             // 게임 동작시에 필요한 작업들
             while (gameOver == false)
             {
@@ -68,20 +70,18 @@ namespace KGA_OOPConsoleProject
                 Console.WriteLine();
                 CurScene.Result();
                 Console.WriteLine();
-
             }
+            End(); // 게임 종료
         }
 
         //4. 현재 씬을 변경하는 기능
         public static void ChangeScene(string sceneName)
         {
-            if (sceneDic.ContainsKey(sceneName) == false)
-            {
-                Console.WriteLine("존재하지 않는 씬입니다.");
-                return;
-            }
+            prevSceneName = CurScene.name;
+
+            CurScene.Exit();
             CurScene = sceneDic[sceneName];
-            //curScene.Update();
+            CurScene.Enter();
         }
 
         //5. 게임 오버
