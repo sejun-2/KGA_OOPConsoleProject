@@ -194,6 +194,9 @@ namespace KGA_OOPConsoleProject
 
         public void PrintAll()
         {
+            Player player = new Player();
+            Console.WriteLine("체력 : {0}", player.MaxHP);
+            Console.WriteLine();
             Console.WriteLine("===============소유한 아이템===============");
             if (items.Count == 0)
             {
