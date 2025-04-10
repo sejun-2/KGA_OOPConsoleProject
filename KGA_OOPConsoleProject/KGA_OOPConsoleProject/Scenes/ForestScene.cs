@@ -1,4 +1,5 @@
 ﻿using KGA_OOPConsoleProject.GameObjects;
+using KGA_OOPConsoleProject.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,15 +16,24 @@ namespace KGA_OOPConsoleProject.Scenes
 
             mapData = new string[]
             {
-                "  ######",
-                "#      #",
-                "#      #",
-                "#   ## #",
-                "#   #  #",
-                "########"
+                "################################",
+                "# #       #      #      #      #",
+                "# #  #### # ###### ######   # ##",
+                "# #     # # #              ##  #",
+                "# ####  # # ###### #############",
+                "#       # #                    #",
+                "######### ########## #######  ##",
+                "#         #          #         #",
+                "# #########  ##### ###  ###### #",
+                "# #       #      # #    #      #",
+                "# #  ## # #####  # #  ### ######",
+                "# #   # #        # #  #        #",
+                "# ##### ######## # ########### #",
+                "#                #         # # #",
+                "################################"
             };
 
-            map = new bool[6, 8];
+            map = new bool[15, 32];
             for (int y = 0; y < map.GetLength(0); y++)
             {
                 for (int x = 0; x < map.GetLength(1); x++)
@@ -33,14 +43,17 @@ namespace KGA_OOPConsoleProject.Scenes
             }
 
             gameObjects = new List<GameObject>();
-            
+            gameObjects.Add(new Fruit(new Vector2(1, 4)));
+            gameObjects.Add(new Fruit(new Vector2(5, 11)));
+            gameObjects.Add(new Fruit(new Vector2(23, 11)));
+            gameObjects.Add(new Place("Beach", 'B', new Vector2(30, 13)));
         }
 
         public override void Enter()
         {
-            if (Game.prevSceneName == "NormalField")
+            if (Game.prevSceneName == "Beach")
             {
-                Game.Player.Position = new Vector2(1, 1);
+                Game.Player.position = new Vector2(30, 13);
             }
             Game.Player.map = map;
         }

@@ -10,7 +10,8 @@ namespace KGA_OOPConsoleProject
     public class Player
     {
         // 플레이어의 기본 정보들
-        public Vector2 Position; // 플레이어 위치
+        public Vector2 position; // 플레이어 위치
+
         private Inventory inventory; // 플레이어 인벤토리
         public Inventory Inventory { get { return inventory; } } // 플레이어 인벤토리 접근자
         public bool[,] map;
@@ -24,7 +25,8 @@ namespace KGA_OOPConsoleProject
 
         public Player()
         {
-            inventory = new Inventory(); // 플레이어 인벤토리 초기화
+            inventory = new Inventory();    // 플레이어 인벤토리 초기화
+            position = new Vector2(1,1);    // 플레이어 시작위치 지정.
 
             maxHP = 100; // 플레이어 최대 체력
             curHP = maxHP; // 플레이어 현재 체력
@@ -48,7 +50,7 @@ namespace KGA_OOPConsoleProject
         }
         public void Print()
         {
-            Console.SetCursorPosition(Position.x, Position.y);
+            Console.SetCursorPosition(position.x, position.y);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write('P');
             Console.ResetColor();
@@ -71,7 +73,7 @@ namespace KGA_OOPConsoleProject
 
         private void Move(ConsoleKey input)
         {
-            Vector2 targetPos = Position;
+            Vector2 targetPos = position;
 
             switch (input)
             {
@@ -89,9 +91,9 @@ namespace KGA_OOPConsoleProject
                     break;
             }
 
-            ifads (map[targetPos.y, targetPos.x] == true)
+            if (map[targetPos.y, targetPos.x] == true)
             {
-                Position = targetPos;
+                position = targetPos;
             }
 
 

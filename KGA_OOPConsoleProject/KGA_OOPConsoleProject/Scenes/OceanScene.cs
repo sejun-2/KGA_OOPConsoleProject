@@ -1,4 +1,5 @@
-﻿using KGA_OOPConsoleProject.Items;
+﻿using KGA_OOPConsoleProject.GameObjects;
+using KGA_OOPConsoleProject.Items;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace KGA_OOPConsoleProject.Scenes
     {
         private ConsoleKey input;
 
-        Food fish = new Food(); // 해양 생물 아이템 생성
+        Food fish = new Food(new Vector2(0,0)); // 해양 생물 아이템 생성
         Player player = new Player(); // 플레이어 객체를 가져옵니다.
 
         public OceanScene()
@@ -67,7 +68,8 @@ namespace KGA_OOPConsoleProject.Scenes
                         System.Threading.Thread.Sleep(1000); // 1초 대기
                         Util.Print("낚시에 성공했습니다.\n 물고기를 낚았습니다.", ConsoleColor.Green);
                         System.Threading.Thread.Sleep(1000); // 1초 대기
-                        player.Inventory.Add(fish); // 플레이어의 인벤토리에 해양 생물 추가
+                        player.Inventory.Add(new Food()); // 플레이어의 인벤토리에 해양 생물 추가
+
                     }
                     else
                     {
@@ -90,9 +92,13 @@ namespace KGA_OOPConsoleProject.Scenes
             {
                 case ConsoleKey.D1:
                     player.activity(10); // 활동 시 체력 감소
+                    Console.WriteLine("체력이 10 감소하여 {0} 이 되었습니다.", player.CurHP);
+                    System.Threading.Thread.Sleep(1000); // 1초 대기
                     break;
                 case ConsoleKey.D2:
                     player.activity(10); // 활동 시 체력 감소
+                    Console.WriteLine("체력이 10 감소하여 {0} 이 되었습니다.", player.CurHP);
+                    System.Threading.Thread.Sleep(1000); // 1초 대기
                     break;
                 case ConsoleKey.D3:
                     Game.ChangeScene("Beach");

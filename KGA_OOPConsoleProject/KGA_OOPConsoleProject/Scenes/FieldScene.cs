@@ -43,7 +43,7 @@ namespace KGA_OOPConsoleProject.Scenes
         {
             foreach (GameObject go in gameObjects)
             {
-                if (Game.Player.Position == go.Position)
+                if (Game.Player.position == go.position)
                 {
                     go.Interact(Game.Player);
                     if (go.isOnce == true)

@@ -15,7 +15,7 @@ namespace KGA_OOPConsoleProject
         // 화면 전환
         private static Dictionary<string, BaseScene> sceneDic;
         private static BaseScene CurScene;  // 현재 씬
-        public static string prevSceneName; // 이전 씬 이름
+        public static string prevSceneName;
 
         private static Player player; // 플레이어 객체
         public static Player Player { get { return player; } }  // 플레이어 접근자
